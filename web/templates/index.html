@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>J.A.R.V.I.S</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="bg-orbit"></div>
+
+<div class="jarvis-shell">
+    <div class="jarvis-title">
+        <h1>J.A.R.V.I.S</h1>
+        <p>Just A Rather Very Intelligent System</p>
+    </div>
+
+    <div class="voice-orb">
+        <div class="orb-ring"></div>
+        <div class="orb-core"></div>
+        <div class="orb-wave orb-wave-1"></div>
+        <div class="orb-wave orb-wave-2"></div>
+    </div>
+
+    <p class="jarvis-status">VOICE ASSISTANT ACTIVE</p>
+    <p class="jarvis-hint">
+        Speak directly to Jarvis
+        </p>
+        
+        <div id="liveText" class="jarvis-hint">
+        Waiting for command...
+        </div>
+        
+        <div id="responseText" class="jarvis-hint">
+        Ready
+        </div>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
