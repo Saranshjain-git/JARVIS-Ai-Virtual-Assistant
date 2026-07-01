@@ -90,11 +90,17 @@ def command():
 # =========================
 
 if __name__ == "__main__":
-    print("STARTING FLASK")
 
-    app.run(
-    host="127.0.0.1",
-    port=5001,
-    debug=False,
-    use_reloader=False
-)
+    if os.environ.get("RENDER") == "true":
+        app.run(
+            host="0.0.0.0",
+            port=int(os.environ.get("PORT", 5000)),
+            debug=False
+        )
+    else:
+        app.run(
+            host="127.0.0.1",
+            port=5001,
+            debug=False,
+            use_reloader=False
+        )
