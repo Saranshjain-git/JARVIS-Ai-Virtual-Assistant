@@ -24,12 +24,12 @@ if not IS_RENDER:
         sys.path.append(BASE_DIR)
 
         import main as jarvis
+
         print("AFTER IMPORT")
         print(jarvis)
-
         print("Local JARVIS Loaded Successfully")
 
-    except Exception as e:
+    except Exception:
         print("Jarvis Import Error:")
         traceback.print_exc()
 
@@ -56,7 +56,10 @@ def command():
 
         print("Command:", user_command)
 
+        # =========================
         # LOCAL WINDOWS
+        # =========================
+
         if jarvis is not None:
 
             result = jarvis.handle_command(
@@ -68,19 +71,21 @@ def command():
                 "message": result if result else "Command Executed"
             })
 
+        # =========================
         # RENDER
-        else:
-else:
+        # =========================
 
-    return jsonify({
-        "status": "success",
-        "message": (
-            f'JARVIS received your command: "{user_command}"\n\n'
-            "This is the live web demo of JARVIS.\n"
-            "Desktop automation features (opening apps, controlling brightness, Wi-Fi, camera, screenshots, etc.) "
-            "are available only in the Windows desktop version."
-        )
-    })
+        else:
+
+            return jsonify({
+                "status": "success",
+                "message": (
+                    f'JARVIS received your command: "{user_command}"\n\n'
+                    "This is the live web demo of JARVIS.\n"
+                    "Desktop automation features (opening apps, controlling brightness, Wi-Fi, camera, screenshots, etc.) "
+                    "are available only in the Windows desktop version."
+                )
+            })
 
     except Exception as e:
 
@@ -97,13 +102,18 @@ else:
 
 if __name__ == "__main__":
 
-    if os.environ.get("RENDER") == "true":
+    print("STARTING FLASK")
+
+    if IS_RENDER:
+
         app.run(
             host="0.0.0.0",
             port=int(os.environ.get("PORT", 5000)),
             debug=False
         )
+
     else:
+
         app.run(
             host="127.0.0.1",
             port=5001,
