@@ -102,7 +102,11 @@ def command():
 
 if __name__ == "__main__":
 
+    print("\n====================================")
     print("STARTING FLASK")
+    print("Open JARVIS in your browser:")
+    print("http://127.0.0.1:5001")
+    print("====================================\n")
 
     if IS_RENDER:
 
