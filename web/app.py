@@ -70,11 +70,17 @@ def command():
 
         # RENDER
         else:
+else:
 
-            return jsonify({
-                "status": "success",
-                "message": f"Command received: {user_command}\n\nDesktop automation works only in the local Windows version."
-            })
+    return jsonify({
+        "status": "success",
+        "message": (
+            f'JARVIS received your command: "{user_command}"\n\n'
+            "This is the live web demo of JARVIS.\n"
+            "Desktop automation features (opening apps, controlling brightness, Wi-Fi, camera, screenshots, etc.) "
+            "are available only in the Windows desktop version."
+        )
+    })
 
     except Exception as e:
 
